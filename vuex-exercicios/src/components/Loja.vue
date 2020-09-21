@@ -14,17 +14,23 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
       sequencia: 1,
-      quantidade: 1,
-      preco: 9.99,
     };
   },
+  computed: {
+    quantidade() {
+      return this.$store.paramtros.state.quantidade;
+    },
+    preco() {
+      return this.$store.paramtros.state.preco;
+    },
+  },
   methods: {
-    ...mapMutations(["adicionarProduto"]),
+    ...mapActions(["adicionarProduto"]),
 
     adicionar() {
       const produto = {
